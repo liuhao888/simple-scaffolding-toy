@@ -4,7 +4,8 @@
   "description": "toy cli",
   "main": "index.js",
   "bin": {
-    "toy": "./bin/toy.js"
+    "toy": "./bin/toy.js",
+    "toy-init": "./bin/toy-init.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/chun5398/simple-scaffolding-toy#readme",
   "dependencies": {
+    "chalk": "^2.3.2",
     "commander": "^2.15.1"
   }
 }
