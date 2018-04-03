@@ -6,8 +6,18 @@ const chalk = require('chalk');
 /**
  * toy init 基本用法
  */
-commander.usage('<template-name>, [project-name]')
-  .option('-c, --clone', 'use git clone');
+commander.usage('<template-name>, [project-name]');
+
+/**
+ * toy init --help 弹出帮助信息
+ */
+commander.on('--help', () => {
+  console.info('Example:');
+  console.info();
+  console.info(chalk.red('    # create a new project    '));
+  console.info(chalk.green('    $ toy init my-project   '));
+  console.info();
+})
 
 
 /**
