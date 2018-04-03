@@ -1,0 +1,28 @@
+{
+  "name": "simple-scaffolding-toy",
+  "version": "0.1.0",
+  "description": "toy cli",
+  "main": "index.js",
+  "bin": {
+    "toy": "./bin/toy.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chun5398/simple-scaffolding-toy.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "chunyangqiao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chun5398/simple-scaffolding-toy/issues"
+  },
+  "homepage": "https://github.com/chun5398/simple-scaffolding-toy#readme",
+  "dependencies": {
+    "commander": "^2.15.1"
+  }
+}
