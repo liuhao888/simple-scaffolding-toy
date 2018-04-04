@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 const commander = require('commander');
 const chalk = require('chalk');
-const inquirer = require('inquirer');
-const download = require('download-git-repo');
+const inquirer = require('inquirer'); // 问询
+const download = require('download-git-repo'); 
 const path = require('path'); // node module
 const exists = require('fs').existsSync; // 检查是否存在路径
+const ora = require('ora');
+const home = require('user-home');
 
 /**
  * toy init 基本用法
@@ -46,6 +48,7 @@ const isEmptyProjectName = !projectName || projectName === '.'; // 是否输入�
 const name = isEmptyProjectName ? path.relative('../', process.cwd()) : projectName; // 如果项目名称为空，则返回到当前进程的目录的上一级目录
 const to = path.resolve(projectName || '.'); // 得到一个相对与当前的工作目录的绝对路径
 const clone = commander.clone || false;
+const tmp = path.join(home, '.chun5398', templateName.replace(/[\/:]/g, '-'));
 
 if (commander.offline) {
 
@@ -66,6 +69,28 @@ if ( isEmptyProjectName || exists(to)) {
  initProjectDirectory();
 }
 
+/**
+ * 初始化项目，生成模板文件 目前时直接从github上拉取
+ */
 function initProjectDirectory () {
-  
+  const templateUrl = 'chun5398/' + templateName;
+  downloadAndInitial(templateUrl);
+}
+
+/**
+ * 下载模板
+ * @param {*} template 模板名称
+ */
+function downloadAndInitial (templateUrl) {
+  const spinner = ora('downloading template');
+  spinner.start();
+  download(templateUrl, process.cwd(), { clone }, (err) => {
+    // console.log('templateUrl' + templateUrl);
+    // console.log(tmp);
+    // console.log({ clone });
+    spinner.stop();
+    if (err) {
+      console.warn('Failed to download repo' + templateUrl + ':' + err.message.trim());
+    }
+  })
 }
